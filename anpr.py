@@ -57,7 +57,7 @@ def main():
             # Lets see what the analysis thinks
             analysis = alpr.recognize_file(snapshot)
             if len(analysis['results']) == 0:
-                # We didn't recognise any licence plates in the current snapshit
+                # We didn't recognise any licence plates in the current snapshot
                 mainLogger.debug('No licence plates recognised')
             else:
                 # Maybe we got something
