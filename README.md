@@ -4,6 +4,7 @@ Running ANPR on an RPi
 ## Getting started
 I'd recommend building the OpenANPR from source, as I had more then a few issues with the Raspbian packages, and compatibility issues with the package version vs. the pip version of the python bindings.
 
+[Building from source example](https://www.flat-planet.net/?page_id=90)
 
 ## Sample Output
 ```
