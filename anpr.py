@@ -36,6 +36,7 @@ def main():
     mainLogger.info('Initialising Camera')
     camera=PiCamera()
     mainLogger.info('Capturing initial image for calibration')
+    camera.rotation = 90
     camera.capture('/home/pi/ScriptStartup.jpg')
 
     # Store the latest snapshot in a tmpfs / RAM FS to save wear on the SDCARD
@@ -62,7 +63,7 @@ def main():
             else:
                 # Maybe we got something
                 mainLogger.info('Plate: %s detected with confidence of: %s' % ( analysis['results'][0]['plate'], analysis['results'][0]['confidence'] ) )
-                fName = dataStore + '/IMG_' + captureTS
+                fName = dataStore + 'IMG_' + captureTS
 
                 # Since I don't trust this library to reliable detect licence plates yet, I'm using this as a chance to capture potential matches, as
                 # well as the analysis, to improve the training of the model
@@ -71,9 +72,9 @@ def main():
                 # Once it is reliable (>0.95), the goal would be to have it feed this information to other platforms to allow for analysis and alerting
                 mainLogger.debug('Moving %s to %s' % (snapshot, fName) )
                 shutil.move(snapshot, fName + '.jpg')
-                with open(fName+'.json') as results: 
+                with open(fName+'.json', "w+") as results: 
                     mainLogger.debug('Writing json outputs')
-                    json.dumps(analysis, results, indent=4)
+                    json.dump(analysis, results, indent=4)
                 mainLogger.info('Saving image and analysis')
             
             # Pause loop for 5 seconds
