@@ -22,3 +22,5 @@ I'd recommend building the OpenANPR from source, as I had more then a few issues
 ...
 2020-05-12 10:53:44,985 - ANPR Capture - INFO - Shutting down
 ```
+## Inspired By
+[ANPR CARP SPY](https://magpi.raspberrypi.org/articles/anpr-car-spy-raspberry-pi)
